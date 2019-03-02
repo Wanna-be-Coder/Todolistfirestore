@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Todo List</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/todos.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script type="text/javascript" src="jQuery/lib/jquery-3.2.1.min.js"></script>
+
+
+</head>
+<body>
+	<h2>Welcome <b><%= email %></b></h2>
+<div id="container">
+	
+	<h1>Todo list<i class="fa fa-pencil-square-o" aria-hidden="true"  ></i></h1>
+	
+		<ul>
+		<!--  Printing the todo -->
+				<% todos.forEach(function(todo,index){ %>
+			<li <% if(todo.status==true){}else{%>class="completed"<% } %> ><span><a href="/todo/delete/<%= todo.todo %>"><i class="fa fa-trash" aria-hidden="true"></i></a></span><a class="alist" href="/todo/status/<%= todo.todo %>/<%= todo.status %>"><%= todo.todo %></a><span class="edit pull-right"><a href="/todo/edit/<%= todo.todo %>"><i class="fa fa-edit " aria-hidden="true"></i></a></span></li>
+			
+			<% }) %>
+			
+		</ul>
+
+		<form action="/todo" method="POST">
+			<input type="text" name="todoin" placeholder="Add new Todo" autoComplete="off">
+			<input type="submit" id="utodo" class="btn btn-success btn-block">
+		</form>
+
+
+
+	
+	
+
+
+
+</div>
+<div class="btn">
+<a href="todo/removeall"><button class="rall">Remove All Checked Todos</button></a>
+</div>
+<div class="btn">
+	<a href="/logout"><button class="logout">Logout</button></a>
+</div>
+<script type="text/javascript" src="jQuery/todos.js"></script>
+</body>
+</html>
